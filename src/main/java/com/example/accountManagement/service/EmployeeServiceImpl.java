@@ -4,6 +4,7 @@ import com.example.accountManagement.model.Employee;
 import com.example.accountManagement.repository.EmployeeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,14 +33,21 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
+    public int  update(String role,String fio, String post, Integer id) {
+        log.info("IN EmployeeServiceImpl update{}", id);
+        return employeeRepository.updateEmployee(role, fio, post, id);
+    }
+
+    @Override
+    public List<Employee> getAll() {
+        log.info("IN EmployeeServiceImpl getAllEmployees");
+        return (List<Employee>)employeeRepository.findAll();
+    }
+
+    @Override
     public void delete(Integer id) {
         log.info("IN EmployeeServiceImpl delete{}", id);
         employeeRepository.deleteById(id);
     }
 
-    @Override
-    public List<Employee> getAllEmployees() {
-        log.info("IN EmployeeServiceImpl getAllEmployees");
-        return (List<Employee>)employeeRepository.findAll();
-    }
 }

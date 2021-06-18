@@ -1,5 +1,6 @@
 package com.example.accountManagement.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,6 +16,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     @Column(name = "id")
     private Integer id;
 
@@ -30,6 +32,7 @@ public class Employee {
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL,
             fetch = FetchType.LAZY, optional = false)
     @PrimaryKeyJoinColumn
+    @Setter(AccessLevel.NONE)
     private Credentials credentials;
 
 }

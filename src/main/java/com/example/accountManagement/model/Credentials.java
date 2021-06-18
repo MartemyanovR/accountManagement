@@ -1,5 +1,6 @@
 package com.example.accountManagement.model;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 public class Credentials {
 
     @Id
+    @Setter(AccessLevel.NONE)
     @Column(name = "employee_id")
     private Integer id;
 
@@ -25,6 +27,7 @@ public class Credentials {
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
+    @Setter(AccessLevel.NONE)
     @JoinColumn(name = "employee_id")
     private Employee employee;
 

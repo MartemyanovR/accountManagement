@@ -12,7 +12,9 @@ public interface EmployeeService {
 
     void delete(Integer id);
 
-    List<Employee> getAllEmployees();
+    List<Employee> getAll();
+
+    int update(String role,String fio, String post, Integer id);
 
 
 
