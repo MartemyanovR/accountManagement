@@ -1,20 +1,18 @@
 {
   "input":
-  [
       {
-        "id": "NULL",
+        "id": null,
         "type": 1,
         "role": "User",
         "fio": "Иванов И.И.",
         "post": "Менеджер"
       }
-  ],
+  ,
   "output":
-   [
      {
        "userId": 1,
        "userName" : "ИвановИИ",
        "pass" : "вонавИ"
      }
-   ]
+
 }
