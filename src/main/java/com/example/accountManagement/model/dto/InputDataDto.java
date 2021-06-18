@@ -8,7 +8,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @AllArgsConstructor
-@ToString
 public class InputDataDto {
 
     private Integer id;
@@ -16,6 +15,11 @@ public class InputDataDto {
     private String role;
     private String fio;
     private String post;
+
+    public String toString() {
+        return String.format("\n id: %d \n type: %d \n role: %s" +
+                " \n fio: %s \n post: %S", id, type, role, fio, post);
+    }
 
 
 }
