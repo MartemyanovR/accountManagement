@@ -8,7 +8,7 @@ public interface EmployeeService {
 
     Employee getById(Integer id);
 
-    void save(Employee employee);
+    Employee save(Employee employee);
 
     void delete(Integer id);
 

@@ -29,10 +29,8 @@ public class Employee {
     @Column(name = "post")
     private String post;
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, optional = false)
+    @OneToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
-    @Setter(AccessLevel.NONE)
     private Credentials credentials;
 
 }

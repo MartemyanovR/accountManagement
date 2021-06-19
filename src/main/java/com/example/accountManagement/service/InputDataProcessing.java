@@ -4,18 +4,15 @@ package com.example.accountManagement.service;
 import com.example.accountManagement.model.dto.InputDataDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
-
-import javax.annotation.PostConstruct;
 
 @Component
 public class InputDataProcessing {
 
-    private final WebClient webClient = WebClient.create();
+    //private final WebClient webClient = WebClient.create();
     private static final String URL_INPUT_DATA =
             "https://my-json-server.typicode.com/MartemyanovR/accountManagement/input";
 
-    @PostConstruct
+
     public InputDataDto getInputDataRest() {
         RestTemplate restTemplate = new RestTemplate();
         InputDataDto inputDataDto = restTemplate.getForObject(URL_INPUT_DATA, InputDataDto.class);

@@ -15,10 +15,10 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
     @Transactional
     @Modifying
-    @Query(value = "update Employee e set e.role = :role , e.fio = :fio, e.post = :post " +
-            "where e.id = :id")
+    @Query(value = "UPDATE Employee e SET e.role = :role , e.fio = :fio, e.post = :post " +
+            "WHERE e.id = :id")
     int updateEmployee(@Param("role") String role, @Param("fio") String fio,
-                                             @Param("post")  String post, @Param("post") Integer id);
+                                             @Param("post")  String post, @Param("id") Integer id);
 
 
 

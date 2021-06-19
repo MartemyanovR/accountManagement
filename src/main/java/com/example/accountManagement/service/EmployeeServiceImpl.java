@@ -27,20 +27,20 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public void save(Employee employee) {
+    public Employee save(Employee employee) {
         log.info("IN EmployeeServiceImpl save{}", employee);
-        employeeRepository.save(employee);
+        return employeeRepository.save(employee);
     }
 
     @Override
     public int  update(String role,String fio, String post, Integer id) {
-        log.info("IN EmployeeServiceImpl update{}", id);
+        log.info("IN EmployeeServiceImpl update{}", role, fio, post, id);
         return employeeRepository.updateEmployee(role, fio, post, id);
     }
 
     @Override
     public List<Employee> getAll() {
-        log.info("IN EmployeeServiceImpl getAllEmployees");
+        log.info("IN EmployeeServiceImpl getAll");
         return (List<Employee>)employeeRepository.findAll();
     }
 

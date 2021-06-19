@@ -1,10 +1,13 @@
 package com.example.accountManagement.service;
 
+import com.example.accountManagement.model.Credentials;
 import com.example.accountManagement.model.Employee;
 import com.example.accountManagement.model.dto.InputDataDto;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
 
 @Service
 public class InputJsonToEmployee {
@@ -23,31 +26,31 @@ public class InputJsonToEmployee {
     public Employee getEmployee() {
        @NonNull final InputDataDto inputDataDto = inputDataProcessing.getInputDataRest();
        Employee employee = new Employee();
+       Credentials credentials = new Credentials();
 
         if(inputDataDto.getType() == 1) {
-            employeeService.save(
-                    fillEmployee(inputDataDto, employee)
-                     );
-
-            return employee;
+            employee = fillEmployee(inputDataDto, employee, credentials);
+            return employeeService.save(employee);
         }
         else if(inputDataDto.getType() == 2) {
             /*
+                   блокировка аккаунта
              */
             return null;
         }
-        else if(inputDataDto.getType() == 3) {
-            employee = employeeService.getById(inputDataDto.getId());
-
-            return fillEmployee(inputDataDto, employee);
+        else  {
+            employee = fillEmployee(inputDataDto, employee, credentials);
+            employeeService.update(employee.getRole(), employee.getFio(),
+                    employee.getPost(), inputDataDto.getId());
+            return employeeService.getById(inputDataDto.getId());
         }
-        return employee;
     }
 
-    private Employee fillEmployee(InputDataDto inputDataDto, Employee employee) {
+    private Employee fillEmployee(InputDataDto inputDataDto, Employee employee, Credentials credentials) {
         employee.setRole(inputDataDto.getRole());
         employee.setFio(inputDataDto.getFio());
         employee.setPost(inputDataDto.getPost());
+        credentials.setEmployee(employee);
         return employee;
     }
  }

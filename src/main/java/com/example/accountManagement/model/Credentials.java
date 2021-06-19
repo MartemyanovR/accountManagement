@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 
@@ -15,8 +17,10 @@ import javax.persistence.*;
 public class Credentials {
 
     @Id
-    @Setter(AccessLevel.NONE)
     @Column(name = "employee_id")
+    @GeneratedValue(generator = "gen")
+    @GenericGenerator(name = "gen", strategy = "foreign",
+            parameters = @Parameter(name = "property", value = "employee"))
     private Integer id;
 
     @Column(name = "user_name")
@@ -25,10 +29,7 @@ public class Credentials {
     @Column(name = "passwrd")
     private String password;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    @Setter(AccessLevel.NONE)
-    @JoinColumn(name = "employee_id")
+    @OneToOne(mappedBy = "credentials", cascade = CascadeType.ALL)
     private Employee employee;
 
 }
