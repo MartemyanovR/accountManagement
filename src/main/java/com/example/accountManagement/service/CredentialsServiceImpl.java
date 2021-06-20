@@ -21,13 +21,13 @@ public class CredentialsServiceImpl implements CredentialsService {
 
     @Override
     public Credentials getById(Integer id) {
-        log.info("IN CredentialsServiceImpl getById{}", id);
+        log.info("IN CredentialsServiceImpl getById: {}", id);
         return credentialsRepository.findById(id).get();
     }
 
     @Override
     public void save(Credentials credentials) {
-        log.info("IN CredentialsServiceImpl save{}", credentials);
+        log.info("IN CredentialsServiceImpl save: {}", credentials);
         credentialsRepository.save(credentials);
     }
 
@@ -39,7 +39,7 @@ public class CredentialsServiceImpl implements CredentialsService {
 
     @Override
     public int update(String userName, String password, Integer id) {
-        log.info("IN CredentialsServiceImpl update{}{}{}", userName, password, id);
+        log.info("IN CredentialsServiceImpl update: {}, {}, {}", userName, password, id);
         return credentialsRepository.updateCredentials(userName, password, id);
     }
 }

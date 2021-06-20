@@ -1,4 +1,4 @@
-package com.example.accountManagement.service;
+package com.example.accountManagement.service.converter;
 
 
 import com.example.accountManagement.model.dto.InputDataDto;
@@ -6,11 +6,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 @Component
-public class InputDataProcessing {
+public class JsonToInputDataConverter {
 
     //private final WebClient webClient = WebClient.create();
     private static final String URL_INPUT_DATA =
-            "https://my-json-server.typicode.com/MartemyanovR/accountManagement/input";
+            "http://localhost:3000/employees";
 
 
     public InputDataDto getInputDataRest() {

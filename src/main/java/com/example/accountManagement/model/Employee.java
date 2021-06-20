@@ -1,9 +1,7 @@
 package com.example.accountManagement.model;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -11,12 +9,10 @@ import javax.persistence.*;
 @Table(name = "employees")
 @Getter
 @Setter
-@ToString
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
     @Column(name = "id")
     private Integer id;
 
@@ -29,8 +25,8 @@ public class Employee {
     @Column(name = "post")
     private String post;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn
-    private Credentials credentials;
+    @Column(name = "status_empl")
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
 }

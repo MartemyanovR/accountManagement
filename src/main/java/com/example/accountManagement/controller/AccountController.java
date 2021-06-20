@@ -1,8 +1,9 @@
 package com.example.accountManagement.controller;
 
+import com.example.accountManagement.model.Credentials;
 import com.example.accountManagement.model.Employee;
+import com.example.accountManagement.service.CredentialsServiceImpl;
 import com.example.accountManagement.service.EmployeeServiceImpl;
-import com.example.accountManagement.service.InputJsonToEmployee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,16 +18,22 @@ public class AccountController {
 
 
     private final EmployeeServiceImpl employeeService;
+    private final CredentialsServiceImpl credentialsService;
 
     @Autowired
-    public AccountController(EmployeeServiceImpl employeeService) {
+    public AccountController(EmployeeServiceImpl employeeService,
+                             CredentialsServiceImpl credentialsService) {
         this.employeeService = employeeService;
+        this.credentialsService = credentialsService;
+
     }
 
     @GetMapping
     public String getEmployee(Model model) {
         List<Employee> employees = employeeService.getAll();
+        List<Credentials> credentials = credentialsService.getAll();
         model.addAttribute("employees", employees);
+        model.addAttribute("credentials", credentials);
         return "view/employees";
     }
 

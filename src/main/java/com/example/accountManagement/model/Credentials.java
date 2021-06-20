@@ -13,14 +13,9 @@ import javax.persistence.*;
 @Table(name = "credentials")
 @Getter
 @Setter
-@ToString
 public class Credentials {
 
     @Id
-    @Column(name = "employee_id")
-    @GeneratedValue(generator = "gen")
-    @GenericGenerator(name = "gen", strategy = "foreign",
-            parameters = @Parameter(name = "property", value = "employee"))
     private Integer id;
 
     @Column(name = "user_name")
@@ -29,7 +24,8 @@ public class Credentials {
     @Column(name = "passwrd")
     private String password;
 
-    @OneToOne(mappedBy = "credentials", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    @PrimaryKeyJoinColumn
     private Employee employee;
 
 }

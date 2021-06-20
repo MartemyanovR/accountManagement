@@ -1,8 +1,9 @@
 CREATE TABLE IS NOT EXISTS employees(
-    id   INT NOT NULL AUTO_INCREMENT,
-    rol  VARCHAR(50) NOT NULL,
-    fio  VARCHAR(255) NOT NULL,
-    post VARCHAR(50) NOT NULL,
+    id      INT NOT NULL AUTO_INCREMENT,
+    rol     VARCHAR(50) NOT NULL,
+    fio     VARCHAR(255) NOT NULL,
+    post    VARCHAR(50) NOT NULL,
+    status_empl ENUM('ACTIVE', 'BLOCKED')  default 'ACTIVE'
     PRIMARY KEY (id)
 )
 

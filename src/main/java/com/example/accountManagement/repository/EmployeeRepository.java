@@ -1,6 +1,7 @@
 package com.example.accountManagement.repository;
 
 import com.example.accountManagement.model.Employee;
+import com.example.accountManagement.model.Status;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -13,13 +14,17 @@ import java.time.LocalDateTime;
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
+
     @Transactional
     @Modifying
     @Query(value = "UPDATE Employee e SET e.role = :role , e.fio = :fio, e.post = :post " +
             "WHERE e.id = :id")
     int updateEmployee(@Param("role") String role, @Param("fio") String fio,
-                                             @Param("post")  String post, @Param("id") Integer id);
+                                      @Param("post")  String post, @Param("id") Integer id);
 
-
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE Employee e SET e.status = :status WHERE e.id = :id")
+    int updateStatusEmployee(@Param("status") Status status, @Param("id") Integer id);
 
 }
