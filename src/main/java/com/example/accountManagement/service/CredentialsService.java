@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface CredentialsService {
 
-    Credentials getById(Integer id);
+    Credentials getById(Long id);
 
     void save(Credentials credentials);
 
     List<Credentials> getAll();
 
-    int update(String userName, String password, Integer id);
+    int update(String userName, String password, Long id);
 }

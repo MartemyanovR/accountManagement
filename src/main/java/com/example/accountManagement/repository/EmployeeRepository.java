@@ -16,7 +16,7 @@ import javax.transaction.Transactional;
  * с таблицей employee
  */
 @Repository
-public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     /**
      * Метод обновляет все строки таблицы employee
@@ -31,7 +31,7 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     @Query(value = "UPDATE Employee e SET e.role = :role , e.fio = :fio, e.post = :post " +
             "WHERE e.id = :id")
     int updateEmployee(@Param("role") String role, @Param("fio") String fio,
-                                      @Param("post")  String post, @Param("id") Integer id);
+                                      @Param("post")  String post, @Param("id") Long id);
 
     /**
      * Метод обновляет статус сотрудника
@@ -42,6 +42,6 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     @Transactional
     @Modifying
     @Query(value = "UPDATE Employee e SET e.status = :status WHERE e.id = :id")
-    int updateStatusEmployee(@Param("status") Status status, @Param("id") Integer id);
+    int updateStatusEmployee(@Param("status") Status status, @Param("id") Long id);
 
 }

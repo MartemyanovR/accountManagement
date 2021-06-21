@@ -21,7 +21,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employee getById(Integer id) {
+    public Employee getById(Long id) {
         log.info("IN EmployeeServiceImpl getById: {}", id);
         return employeeRepository.findById(id).orElse(null);
     }
@@ -39,13 +39,13 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public void update(String role,String fio, String post, Integer id) {
+    public void update(String role,String fio, String post, Long id) {
         log.info("IN EmployeeServiceImpl update: {}, {}, {}, {}", role, fio, post, id);
         employeeRepository.updateEmployee(role, fio, post, id);
     }
 
     @Override
-    public void updateStatus(Status status, Integer id) {
+    public void updateStatus(Status status, Long id) {
         log.info("IN EmployeeServiceImpl update: {},{}", status, id);
         employeeRepository.updateStatusEmployee(status, id);
     }

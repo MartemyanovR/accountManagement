@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
  * с таблицей credentials
  */
 @Repository
-public interface CredentialsRepository extends CrudRepository<Credentials, Integer> {
+public interface CredentialsRepository extends CrudRepository<Credentials, Long> {
 
     /**
      * Метод обновляет все строки таблицы credentials
@@ -28,6 +28,6 @@ public interface CredentialsRepository extends CrudRepository<Credentials, Integ
     @Query(value = "UPDATE Credentials c SET c.userName = :userName," +
             "c.password = :password WHERE c.id = :id")
     int updateCredentials(@Param("userName") String userName, @Param("password") String password,
-                          @Param("id") Integer id);
+                          @Param("id") Long id);
 
 }

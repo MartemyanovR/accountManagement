@@ -7,14 +7,14 @@ import java.util.List;
 
 public interface EmployeeService {
 
-    Employee getById(Integer id);
+    Employee getById(Long id);
 
     void save(Employee employee);
 
     List<Employee> getAll();
 
-    void update(String role,String fio, String post, Integer id);
+    void update(String role,String fio, String post, Long id);
 
-    void updateStatus(Status status, Integer id);
+    void updateStatus(Status status, Long id);
 
 }

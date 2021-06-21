@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 public class InputDataDto {
 
-    private Integer id;
+    private Long id;
     private Byte type;
     private String role;
     private String fio;

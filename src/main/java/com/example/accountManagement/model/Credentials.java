@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Credentials {
 
     @Id
-    private Integer id;
+    private Long id;
 
     @Column(name = "user_name")
     private String userName;

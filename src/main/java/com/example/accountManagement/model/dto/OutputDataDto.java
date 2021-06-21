@@ -15,7 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class OutputDataDto {
 
-    private Integer id;
+    private Long id;
     private String userName;
     private String password;
 
