@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+/**
+ * Контроллер для отображения данных хранящихся в БД
+ */
 @Controller
 @RequestMapping("accounts")
 public class AccountController {
@@ -28,6 +31,12 @@ public class AccountController {
 
     }
 
+    /**
+     * Отображает всех сотрудников из таблицы employees,
+     * а так же учетные данные сотрудников из таблицы credentials
+     * @param model
+     * @return  employees.html
+     */
     @GetMapping
     public String getEmployee(Model model) {
         List<Employee> employees = employeeService.getAll();

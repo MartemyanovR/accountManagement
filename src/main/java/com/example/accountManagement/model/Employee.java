@@ -1,14 +1,21 @@
 package com.example.accountManagement.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Класс-сущность для хранения сотрудников в БД
+ */
 @Entity
 @Table(name = "employees")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
 
     @Id

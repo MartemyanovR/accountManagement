@@ -5,6 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Класс получает данные с сущности Credentials,
+ * и передает их на web-сервис.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

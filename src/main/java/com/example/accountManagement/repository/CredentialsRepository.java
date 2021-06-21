@@ -9,9 +9,20 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
+/**
+ * Интерфейс предаставляющий методы для взаимодействия
+ * с таблицей credentials
+ */
 @Repository
 public interface CredentialsRepository extends CrudRepository<Credentials, Integer> {
 
+    /**
+     * Метод обновляет все строки таблицы credentials
+     * @param userName
+     * @param password
+     * @param id
+     * @return количество обновленных строк в БД
+     */
     @Transactional
     @Modifying
     @Query(value = "UPDATE Credentials c SET c.userName = :userName," +

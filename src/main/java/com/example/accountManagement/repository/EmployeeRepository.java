@@ -9,12 +9,23 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 
+
+/**
+ * Интерфейс предаставляющий методы для взаимодействия
+ * с таблицей employee
+ */
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
-
+    /**
+     * Метод обновляет все строки таблицы employee
+     * @param role
+     * @param fio
+     * @param post
+     * @param id
+     * @return количество обновленных строк в БД
+     */
     @Transactional
     @Modifying
     @Query(value = "UPDATE Employee e SET e.role = :role , e.fio = :fio, e.post = :post " +
@@ -22,6 +33,12 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     int updateEmployee(@Param("role") String role, @Param("fio") String fio,
                                       @Param("post")  String post, @Param("id") Integer id);
 
+    /**
+     * Метод обновляет статус сотрудника
+     * @param status
+     * @param id
+     * @return количество обновленных строк в БД
+     */
     @Transactional
     @Modifying
     @Query(value = "UPDATE Employee e SET e.status = :status WHERE e.id = :id")

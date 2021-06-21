@@ -2,6 +2,10 @@ package com.example.accountManagement.model.dto;
 
 import lombok.*;
 
+/**
+ * Класс для передачи входных данных с web-сервиса
+ * в сущность employee
+ */
 @Getter
 @Setter
 @NoArgsConstructor

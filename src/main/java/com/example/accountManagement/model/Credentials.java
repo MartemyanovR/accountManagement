@@ -1,18 +1,21 @@
 package com.example.accountManagement.model;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 
+/**
+ * Класс на основании которого в таблицу БД credentials
+ * сохраняются учетные данные сотрудников.
+ */
 @Entity
 @Table(name = "credentials")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Credentials {
 
     @Id
