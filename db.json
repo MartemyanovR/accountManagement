@@ -1,0 +1,14 @@
+{
+  "employees": {
+    "id": null,
+    "type": 1,
+    "role": "роль",
+    "fio": "ФИО",
+    "post": "Должность"
+  },
+  "credentials": {
+    "id": 1,
+    "userName": "ФИО",
+    "password": "uK*2O1Q8"
+  }
+}
