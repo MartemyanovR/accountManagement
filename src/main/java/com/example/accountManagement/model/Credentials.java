@@ -1,8 +1,6 @@
 package com.example.accountManagement.model;
 
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 import javax.persistence.*;
 

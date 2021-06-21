@@ -58,7 +58,6 @@ public class EmployeeCredentialsService {
         @NonNull final InputDataDto inputDataDto = jsonToInputDataConverter.getInputData();
         final Employee employee;
         final Credentials credentials;
-        final OutputDataDto outputDataDto;
 
         if(inputDataDto.getType() == 1) {
             employee = getAndSaveToEmployee(inputDataDto);
@@ -72,9 +71,8 @@ public class EmployeeCredentialsService {
                 return Optional.empty();
             }
             credentials = updateCredentials(employeeOptional.get());
-            Optional<OutputDataDto> outputDataDtoOptional =
-                    Optional.of(credentialsToOutputDate.fillOutputDate(credentials));
-            return outputDataDtoOptional;
+
+            return Optional.of(credentialsToOutputDate.fillOutputDate(credentials));
         }
         else if(inputDataDto.getType() == 2){
             getAndUpdateStatusToEmployee(inputDataDto);

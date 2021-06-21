@@ -5,7 +5,6 @@ import com.example.accountManagement.model.Status;
 import com.example.accountManagement.repository.EmployeeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,13 +23,13 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public Employee getById(Integer id) {
         log.info("IN EmployeeServiceImpl getById: {}", id);
-        return employeeRepository.findById(id).get();
+        return employeeRepository.findById(id).orElse(null);
     }
 
     @Override
-    public Employee save(Employee employee) {
+    public void save(Employee employee) {
         log.info("IN EmployeeServiceImpl save: {}", employee);
-        return employeeRepository.save(employee);
+        employeeRepository.save(employee);
     }
 
     @Override
@@ -40,15 +39,15 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public int  update(String role,String fio, String post, Integer id) {
+    public void update(String role,String fio, String post, Integer id) {
         log.info("IN EmployeeServiceImpl update: {}, {}, {}, {}", role, fio, post, id);
-        return employeeRepository.updateEmployee(role, fio, post, id);
+        employeeRepository.updateEmployee(role, fio, post, id);
     }
 
     @Override
-    public int  updateStatus(Status status, Integer id) {
+    public void updateStatus(Status status, Integer id) {
         log.info("IN EmployeeServiceImpl update: {},{}", status, id);
-        return employeeRepository.updateStatusEmployee(status, id);
+        employeeRepository.updateStatusEmployee(status, id);
     }
 
 }

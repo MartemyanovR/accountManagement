@@ -1,20 +1,12 @@
 package com.example.accountManagement.service;
 
-import com.example.accountManagement.model.Employee;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.Random;
 
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
 class CredentialsConverterTest {
-
-    private Employee employee;
-
-
 
     @Test
     void generatePassword() {
@@ -38,7 +30,7 @@ class CredentialsConverterTest {
         System.out.println(password);
 
         assertThat(8, equalTo(password.length));
-        assertThat(true, is(!Character.isLetter(Character.valueOf(password[2]))));
-        assertThat(true, is(Character.isDigit(Character.valueOf(password[3]))));
+        assertThat(true, is(!Character.isLetter(password[2])));
+        assertThat(true, is(Character.isDigit(password[3])));
     }
 }

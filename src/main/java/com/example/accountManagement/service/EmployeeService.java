@@ -9,12 +9,12 @@ public interface EmployeeService {
 
     Employee getById(Integer id);
 
-    Employee save(Employee employee);
+    void save(Employee employee);
 
     List<Employee> getAll();
 
-    int update(String role,String fio, String post, Integer id);
+    void update(String role,String fio, String post, Integer id);
 
-    int updateStatus(Status status, Integer id);
+    void updateStatus(Status status, Integer id);
 
 }

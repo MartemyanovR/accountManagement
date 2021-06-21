@@ -20,10 +20,10 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
     /**
      * Метод обновляет все строки таблицы employee
-     * @param role
-     * @param fio
-     * @param post
-     * @param id
+     * @param role роль
+     * @param fio  ФИО
+     * @param post должность
+     * @param id идентификатор
      * @return количество обновленных строк в БД
      */
     @Transactional
@@ -35,8 +35,8 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
     /**
      * Метод обновляет статус сотрудника
-     * @param status
-     * @param id
+     * @param status статус
+     * @param id идентификатор
      * @return количество обновленных строк в БД
      */
     @Transactional

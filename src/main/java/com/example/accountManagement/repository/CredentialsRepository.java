@@ -18,9 +18,9 @@ public interface CredentialsRepository extends CrudRepository<Credentials, Integ
 
     /**
      * Метод обновляет все строки таблицы credentials
-     * @param userName
-     * @param password
-     * @param id
+     * @param userName логин
+     * @param password пароль
+     * @param id идентификатор
      * @return количество обновленных строк в БД
      */
     @Transactional

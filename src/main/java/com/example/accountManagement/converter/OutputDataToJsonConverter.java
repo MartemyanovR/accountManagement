@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
 import java.util.Optional;
 
 /**
@@ -43,7 +41,7 @@ public class OutputDataToJsonConverter {
         headers.setContentType(MediaType.APPLICATION_JSON);
         if(outputDataDtoOptional.isPresent()) {
             restTemplate.postForObject(URL_OUTPUT_DATA,
-                    new HttpEntity(outputDataDtoOptional.get(), headers) , OutputDataDto.class);
+                    new HttpEntity<>(outputDataDtoOptional.get(), headers) , OutputDataDto.class);
             log.info("Data was sent successfully");
         } else {
             log.warn("Account has been locked, or incorrect data is present.");

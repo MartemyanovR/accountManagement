@@ -1,10 +1,9 @@
-package com.example.accountManagement.service.converter;
+package com.example.accountManagement.converter;
 
 import com.example.accountManagement.model.Credentials;
 import com.example.accountManagement.model.Employee;
 import com.example.accountManagement.model.Status;
 import com.example.accountManagement.model.dto.InputDataDto;
-import com.example.accountManagement.model.dto.OutputDataDto;
 import com.example.accountManagement.repository.CredentialsRepository;
 import com.example.accountManagement.repository.EmployeeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,16 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.jdbc.JdbcTestUtils;
-import org.springframework.web.client.RestTemplate;
-
-import java.sql.SQLException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -38,14 +30,12 @@ class OutputDataToJsonConverterTest {
     @Autowired
     private CredentialsRepository credentialsRepository;
 
-    RestTemplate restTemplate = new RestTemplate();
     InputDataDto inputDataDto;
-    OutputDataDto outputDataDto;
     Employee employee;
     Credentials credentials;
 
     @BeforeEach
-    void setUp() throws SQLException {
+    void setUp() {
         JdbcTestUtils.deleteFromTables(jdbcTemplate, "employees");
         JdbcTestUtils.deleteFromTables(jdbcTemplate, "credentials");
     }

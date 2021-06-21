@@ -34,7 +34,6 @@ public class AccountController {
     /**
      * Отображает всех сотрудников из таблицы employees,
      * а так же учетные данные сотрудников из таблицы credentials
-     * @param model
      * @return  employees.html
      */
     @GetMapping

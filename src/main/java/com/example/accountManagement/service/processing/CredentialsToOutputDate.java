@@ -13,7 +13,7 @@ public class CredentialsToOutputDate {
 
     /**
      * Преобразование credentials сущности OutputDataDto объект
-     * @param credentials
+     * @param credentials учетная запись
      * @return готовый объект для отправки данных на внешний сервис
      */
     public OutputDataDto fillOutputDate(Credentials credentials) {

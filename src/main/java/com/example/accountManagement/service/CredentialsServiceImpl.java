@@ -22,7 +22,7 @@ public class CredentialsServiceImpl implements CredentialsService {
     @Override
     public Credentials getById(Integer id) {
         log.info("IN CredentialsServiceImpl getById: {}", id);
-        return credentialsRepository.findById(id).get();
+        return credentialsRepository.findById(id).orElse(null);
     }
 
     @Override

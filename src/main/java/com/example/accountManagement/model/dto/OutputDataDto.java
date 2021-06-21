@@ -20,7 +20,7 @@ public class OutputDataDto {
     private String password;
 
     public String toString() {
-        return String.format("\n id: %d \n userName: %d \n password: %s"
+        return String.format("\n id: %d \n userName: %s \n password: %s"
                 , id, userName, password);
     }
 
