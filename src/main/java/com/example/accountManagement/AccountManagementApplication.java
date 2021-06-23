@@ -1,6 +1,5 @@
 package com.example.accountManagement;
 
-import com.example.accountManagement.converter.OutputDataToJsonConverter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,9 +11,9 @@ public class AccountManagementApplication {
 
 		ApplicationContext applicationContext = SpringApplication.run(AccountManagementApplication.class, args);
 
-		OutputDataToJsonConverter outputDataToJsonConverter =
+		/*OutputDataToJsonConverter outputDataToJsonConverter =
 				applicationContext.getBean(OutputDataToJsonConverter.class);
-		outputDataToJsonConverter.sendOutputData();
+		outputDataToJsonConverter.sendOutputData();*/
 	}
 
 }

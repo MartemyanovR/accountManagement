@@ -8,8 +8,6 @@ import com.example.accountManagement.model.dto.OutputDataDto;
 import com.example.accountManagement.service.processing.CredentialsToOutputDate;
 import com.example.accountManagement.service.processing.EmployeeToCredentials;
 import com.example.accountManagement.service.processing.InputDataToEmployee;
-import com.example.accountManagement.converter.JsonToInputDataConverter;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +22,6 @@ import java.util.Optional;
 @Service
 public class EmployeeCredentialsService {
 
-    private final JsonToInputDataConverter jsonToInputDataConverter;
     private final EmployeeServiceImpl employeeService;
     private final CredentialsServiceImpl credentialsService;
     private final CredentialsToOutputDate credentialsToOutputDate;
@@ -33,13 +30,11 @@ public class EmployeeCredentialsService {
 
 
     @Autowired
-    public EmployeeCredentialsService(JsonToInputDataConverter jsonToInputDataConverter,
-                                      EmployeeServiceImpl employeeService,
+    public EmployeeCredentialsService(EmployeeServiceImpl employeeService,
                                       CredentialsServiceImpl credentialsService,
                                       CredentialsToOutputDate credentialsToOutputDate,
                                       EmployeeToCredentials employeeToCredentials,
                                       InputDataToEmployee inputDataToEmployee) {
-        this.jsonToInputDataConverter = jsonToInputDataConverter;
         this.employeeService = employeeService;
         this.credentialsService = credentialsService;
         this.credentialsToOutputDate = credentialsToOutputDate;
@@ -54,8 +49,7 @@ public class EmployeeCredentialsService {
      * на внешний сервис объект OutputDataDto, либо пустой Optional
      * если статус сотрудника был Blocked или при некорректных данных
      */
-    public Optional<OutputDataDto> chooseActionForStaffChanges() {
-        @NonNull final InputDataDto inputDataDto = jsonToInputDataConverter.getInputData();
+    public Optional<OutputDataDto> chooseActionForStaffChanges(InputDataDto inputDataDto) {
         final Employee employee;
         final Credentials credentials;
 
@@ -76,7 +70,6 @@ public class EmployeeCredentialsService {
         }
         else if(inputDataDto.getType() == 2){
             getAndUpdateStatusToEmployee(inputDataDto);
-            log.info("Employee was blocked");
             return Optional.empty();
         }
         return Optional.empty();
